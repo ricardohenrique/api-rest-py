@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+
+from updates.views import json_http_example_view, json_response_example_view, JsonCBV, JsonCBV2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('json/example/1', json_http_example_view),
+    url('json/example/2', json_response_example_view),
+    url('json/example/CBV', JsonCBV.as_view()),
+    url('json/example/CBV2', JsonCBV2.as_view()),
 ]
